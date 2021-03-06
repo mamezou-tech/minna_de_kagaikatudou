@@ -9,5 +9,5 @@
   - 資料は[こちら](/4th_restapi/doc/modern_restapi_development_publicversion.pdf)
   - サンプルアプリは[こちら](/4th_restapi)
 <p align="left">
-  <img src="https://user-images.githubusercontent.com/60466339/110191445-d8de9b80-7e6b-11eb-8b23-f8d84050774b.png">
+  <img src="https://user-images.githubusercontent.com/60466339/110200048-304a2f00-7e9f-11eb-9760-59b9fad4a440.png">
 </p>
