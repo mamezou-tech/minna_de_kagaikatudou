@@ -1,0 +1,46 @@
+
+info: 
+  contact: 
+    name: 豆ちゃん
+    url: https://www.mamezou.com
+  title: 会員価格を計算してくれる公開APIですよん♪
+  version: 0.0.1-SNAPSHOT
+openapi: 3.0.1
+paths:
+  /products/pricecalc: 
+    get: 
+      parameters:
+      - 
+        description: 会員番号。数値＋大文字アルファベットのみ
+        in: query
+        name: memberNo
+        required: true
+        schema: 
+          maxLength: 5
+          minLength: 5
+          type: string
+      - 
+        description: 価格
+        in: query
+        name: price
+        required: true
+        schema: 
+          format: int32
+          maximum: 99999999
+          minimum: 1
+          type: integer
+      description: 会員の会員種別に応じた割引率を適用した価格を計算する
+      operationId: calculatePrice
+      responses:
+        '200': 
+          content:
+            application/json: 
+              schema: 
+                items: 
+                  format: int32
+                  type: integer
+                maxItems: 3
+                minItems: 3
+                type: array
+          description: 計算結果。1個目は割引後の価格、2個目は会員種別、3個目は割引率
+      summary: 会員価格を計算する
