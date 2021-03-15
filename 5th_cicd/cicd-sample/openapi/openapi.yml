@@ -29,7 +29,7 @@ paths:
           maximum: 99999999
           minimum: 1
           type: integer
-      description: 会員の会員種別に応じた割引率を適用した価格を計算する
+      description: 会員種別に応じた割引率を適用した価格を計算する
       operationId: calculatePrice
       responses:
         '200': 
