@@ -40,17 +40,18 @@
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>          summary = <span class="jxr_string">"会員価格を計算する"</span>,
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>          description = <span class="jxr_string">"会員の会員種別に応じた割引率を適用した価格を計算する"</span>)
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>      @Parameters({
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>          @Parameter(name = <span class="jxr_string">"memberNo"</span>, description = <span class="jxr_string">"会員番号。数値＋大文字アルファベットのみ"</span>, required = <strong class="jxr_keyword">true</strong>,
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>              schema = @Schema(implementation = String.<strong class="jxr_keyword">class</strong>, minLength = 5, maxLength = 5)),
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>          @Parameter(name = <span class="jxr_string">"price"</span>,  description = <span class="jxr_string">"価格"</span>, required = <strong class="jxr_keyword">true</strong>,
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>              schema = @Schema(implementation = Integer.<strong class="jxr_keyword">class</strong>, minimum = <span class="jxr_string">"1"</span>, maximum = <span class="jxr_string">"99999999"</span>))
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>      })
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>      @APIResponse(responseCode = <span class="jxr_string">"200"</span>,
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>          description = <span class="jxr_string">"計算結果。1個目は割引後の価格、2個目は会員種別、3個目は割引率を格納"</span>,
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>          content = @Content(mediaType = <span class="jxr_string">"application/json"</span>, schema =
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>              @Schema(type = SchemaType.ARRAY, implementation = Integer.<strong class="jxr_keyword">class</strong>, minItems = 3, maxItems = 3)))
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>      List&lt;Integer&gt; calculatePrice(@QueryParam(<span class="jxr_string">"memberNo"</span>) String memberNo, @QueryParam(<span class="jxr_string">"price"</span>) <strong class="jxr_keyword">int</strong> price);
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  }
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          @Parameter(name = <span class="jxr_string">"memberNo"</span>, description = <span class="jxr_string">"会員番号。数値＋大文字アルファベットのみ（一般会員はA0001,シルバー会員はA0002, ゴールド会員はA0003）"</span>,
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>              required = <strong class="jxr_keyword">true</strong>,
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>              schema = @Schema(implementation = String.<strong class="jxr_keyword">class</strong>, minLength = 5, maxLength = 5)),
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          @Parameter(name = <span class="jxr_string">"price"</span>,  description = <span class="jxr_string">"価格"</span>, required = <strong class="jxr_keyword">true</strong>,
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>              schema = @Schema(implementation = Integer.<strong class="jxr_keyword">class</strong>, minimum = <span class="jxr_string">"1"</span>, maximum = <span class="jxr_string">"99999999"</span>))
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>      })
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      @APIResponse(responseCode = <span class="jxr_string">"200"</span>,
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          description = <span class="jxr_string">"計算結果。1個目は割引後の価格、2個目は会員種別、3個目は割引率を格納"</span>,
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          content = @Content(mediaType = <span class="jxr_string">"application/json"</span>, schema =
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>              @Schema(type = SchemaType.ARRAY, implementation = Integer.<strong class="jxr_keyword">class</strong>, minItems = 3, maxItems = 3)))
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>      List&lt;Integer&gt; calculatePrice(@QueryParam(<span class="jxr_string">"memberNo"</span>) String memberNo, @QueryParam(<span class="jxr_string">"price"</span>) <strong class="jxr_keyword">int</strong> price);
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2021 <a href="https://www.mamezou.com/">Mamezou Co.,Ltd.</a>. All rights reserved.</div>
