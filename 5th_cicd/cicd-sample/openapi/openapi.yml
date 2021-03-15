@@ -11,7 +11,7 @@ paths:
     get: 
       parameters:
       - 
-        description: 会員番号。数値＋大文字アルファベットのみ
+        description: 会員番号。数値＋大文字アルファベットのみ（一般会員はA0001,シルバー会員はA0002, ゴールド会員はA0003）
         in: query
         name: memberNo
         required: true
