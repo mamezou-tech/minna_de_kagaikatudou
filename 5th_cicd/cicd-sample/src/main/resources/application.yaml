@@ -1,0 +1,40 @@
+server:
+  port: 7001
+  sockets:
+    - name: secure
+      port: 7011
+      tls:
+        #Truststore setup
+        trust:
+          keystore:
+            passphrase: "mamezou"
+            trust-store: true
+            resource:
+              resource-path: "forTest.p12"
+        #Keystore with private key and server certificate
+        private-key:
+          keystore:
+            passphrase: "mamezou"
+            resource:
+              resource-path: "forTest.p12"
+  static:
+    classpath:
+      location: "/pages"
+      welcome: "index.html"
+      context: "/static"
+  access-log:
+    format: "%t %h %r %s %b %D"
+
+
+
+cors:
+  paths:
+    # Keep allow-orgins fully open for convenience so that requests can be executed from Swagger UI
+    - path-pattern: /{+}
+      allow-origins: "*"
+
+mp:
+  openapi:
+    scan:
+      exclude:
+        classes: webapi.ManagementResource

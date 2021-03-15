@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 http://maven.apache.org/xsd/decoration-1.8.0.xsd">
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.9</version>
+  </skin>
+  <custom>
+    <fluidoSkin>
+      <topBarEnabled>true</topBarEnabled>
+      <navBarStyle>navbar-inverse</navBarStyle>
+      <gitHub>
+        <projectId>mamezou-tech/minna_de_kagaikatudou/tree/main/5th_cicd</projectId>
+        <ribbonOrientation>right</ribbonOrientation>
+      </gitHub>
+      <googleSearch>
+        <sitesearch/>
+      </googleSearch>
+    </fluidoSkin>
+  </custom>
+  <body>
+    <menu name="Introduction">
+      <item name="${project.name}" href="introduction.html" />
+    </menu>
+    <menu ref="reports"/>
+  </body>
+</project>

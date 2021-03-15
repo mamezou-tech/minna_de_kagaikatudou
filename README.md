@@ -1,3 +1,8 @@
+[![CICD_flow](https://github.com/mamezou-tech/minna_de_kagaikatudou/actions/workflows/CICD_flow.yml/badge.svg)](https://github.com/mamezou-tech/minna_de_kagaikatudou/actions/workflows/CICD_flow.yml)
+<p align="left">
+  <img src="https://user-images.githubusercontent.com/60466339/110203098-84f5a600-7eaf-11eb-89b9-318489b8ca1d.png">
+</p>
+
 # みんな de 課外活動（仮）
 - 第1回 オリエンテーション
   - 資料は[こちら](/1st_orientation/overviewofactivities.pdf)
@@ -8,6 +13,9 @@
 - 第4回 最近のモダンなREST API開発～APIファースト/OpenAPI/etc～
   - 資料は[こちら](/4th_restapi/doc/modern_restapi_development_publicversion.pdf)
   - サンプルアプリは[こちら](/4th_restapi)
+- 第5回 最近のモダンなCI/CD環境 ～Jenkinsおじさんいらず～
+  - 資料はこちら
+  - サンプルアプリは[こちら](/5th_cicd)
 <p align="left">
-  <img src="https://user-images.githubusercontent.com/60466339/110200048-304a2f00-7e9f-11eb-9760-59b9fad4a440.png">
+  <img src="https://user-images.githubusercontent.com/60466339/110191445-d8de9b80-7e6b-11eb-8b23-f8d84050774b.png">
 </p>

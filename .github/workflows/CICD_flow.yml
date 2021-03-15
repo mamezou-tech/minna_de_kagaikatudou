@@ -1,0 +1,129 @@
+name: CICD_flow
+
+on:
+  workflow_dispatch:
+    branches: [ main ]
+    paths: 
+      - '5th_cicd/cicd-sample/**'
+  push:
+    branches: [ main ]
+    paths: 
+      - '5th_cicd/cicd-sample/**'
+
+jobs:
+  build_and_test_and_deploy-jar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Java11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Build & Test & Deploy
+        run: |
+          cd 5th_cicd/cicd-sample
+          mvn -B clean deploy --file pom.xml
+        env:
+          GITHUB_TOKEN: ${{ github.token }} # for deploy to GitHub Packages.
+      - name: prepare deployment
+        run: |
+          cd 5th_cicd/cicd-sample
+          mkdir cicdSample
+          mv ./target/libs ./cicdSample
+          mv ./target/cicd-sample.jar ./cicdSample
+          mv ./deployment/appspec.yml ./cicdSample
+          mv ./deployment/scripts ./cicdSample
+      - name: Upload build Artifact of app
+        uses: actions/upload-artifact@v2
+        with:
+          name: cicdSample
+          path: 5th_cicd/cicd-sample/cicdSample
+          retention-days: 1
+      - name: Upload build Artifact of generatedOas
+        uses: actions/upload-artifact@v2
+        with:
+          name: generated-oas
+          path: 5th_cicd/cicd-sample/target/generated-oas/openapi.yml
+          retention-days: 1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  analysis_and_upload_to_github-pages:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: [build_and_test_and_deploy-jar]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Java11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Analysis & Reporting & upload
+        run: |
+          cd 5th_cicd/cicd-sample
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          mvn -B clean site site:stage scm-publish:publish-scm --file pom.xml -Dusername=$ACTIONS_USER -Dpassword=$ACTIONS_TOKEN
+        env:
+          ACTIONS_USER: ${{ secrets.ACTIONS_USER }}
+          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+
+  commit_oas:
+    runs-on: ubuntu-latest
+    needs: [build_and_test_and_deploy-jar]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Download Artifact of generatedOas
+        uses: actions/download-artifact@v2
+        with:
+          name: generated-oas
+          path: 5th_cicd/cicd-sample/openapi
+      - name: File Commit
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add ./openapi && git diff --cached --exit-code --quiet || git commit -m "Add the regenerated file" -a
+        working-directory: 5th_cicd/cicd-sample
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+  deploy_app_to_server:
+    runs-on: ubuntu-latest
+    needs: [build_and_test_and_deploy-jar]
+    steps:
+      - name: Download Artifact of cicdSample
+        uses: actions/download-artifact@v2
+        with:
+          name: cicdSample
+          path: 5th_cicd/cicd-sample/cicdSample
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+      - name: Upload file to S3 and CodeDeploy
+        env: 
+          S3_UPLOAD_BUCKET: ${{ secrets.S3_UPLOAD_BUCKET }}
+        run: |
+          cd 5th_cicd/cicd-sample
+          ZIP_NAME="deployment/cicdSample-"`date "+%Y%m%d_%H%M%S"`.zip
+          aws deploy push --application-name cicdSampleApplication --s3-location s3://$S3_UPLOAD_BUCKET/$ZIP_NAME --ignore-hidden-files --source ./cicdSample
+          aws deploy create-deployment --application-name cicdSampleApplication --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name cicdSampleApplication --s3-location bucket=$S3_UPLOAD_BUCKET,bundleType=zip,key=$ZIP_NAME
