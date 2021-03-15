@@ -30,7 +30,7 @@ public interface ProcutEndPointSpec {
     @Operation(
         operationId = "calculatePrice",
         summary = "会員価格を計算する",
-        description = "会員の会員種別に応じた割引率を適用した価格を計算する")
+        description = "会員種別に応じた割引率を適用した価格を計算する")
     @Parameters({
         @Parameter(name = "memberNo", description = "会員番号。数値＋大文字アルファベットのみ（一般会員はA0001,シルバー会員はA0002, ゴールド会員はA0003）",
             required = true,
