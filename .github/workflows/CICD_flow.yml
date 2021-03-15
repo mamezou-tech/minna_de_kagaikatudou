@@ -36,7 +36,7 @@ jobs:
           cd 5th_cicd/cicd-sample
           mkdir cicdSample
           mv ./target/libs ./cicdSample
-          mv ./target/cicd-sample.jar ./cicdSample
+          mv ./target/cicd-sample-main.jar ./cicdSample
           mv ./deployment/appspec.yml ./cicdSample
           mv ./deployment/scripts ./cicdSample
       - name: Upload build Artifact of app
