@@ -23,5 +23,5 @@ bin
 data
 
 # etc
-test*
+test.sh
 logs
