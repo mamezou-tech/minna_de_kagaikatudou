@@ -36,9 +36,9 @@ public class ProductResource implements ProcutEndPointSpec {
         }
 
         // 意図的にstopBugsの警告を出す
-        if (memberNo == "A0001") {
-            return null;
-        }
+//        if (memberNo == "A0001") {
+//            return null;
+//        }
 
         int discountRate = TYPE_DISCOUNT_RATE_MAP.get(memberType);
         int discountPrice = (int) (price * ((100.0 - discountRate) /100));
@@ -47,5 +47,10 @@ public class ProductResource implements ProcutEndPointSpec {
                     memberType,
                     discountRate
                 );
+    }
+
+    @Override
+    public String hello() {
+        return "hello";
     }
 }

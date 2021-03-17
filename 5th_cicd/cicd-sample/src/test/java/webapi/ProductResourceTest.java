@@ -48,8 +48,8 @@ public class ProductResourceTest {
 
     @Test
     void testOtherMember() {
-        //List<Integer> expect = List.of(90, 1, 10);
-        List<Integer> expect = List.of(90, 1, 1); // テストレポートを出すため意図的に失敗させる
+        List<Integer> expect = List.of(90, 1, 10);
+        //List<Integer> expect = List.of(90, 1, 1); // テストレポートを出すため意図的に失敗させる
         List<Integer> actual = endPoint.calculatePrice("99999", 100);
         assertEquals(expect, actual);
     }
