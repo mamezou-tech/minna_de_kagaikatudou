@@ -6,47 +6,52 @@ import java.util.Map;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-<span class="fc" id="L9">public class ProductResource implements ProcutEndPointSpec {</span>
+<span class="nc" id="L9">public class ProductResource implements ProcutEndPointSpec {</span>
 
     private static final int TYPE_NOMAL = 1;
     private static final int TYPE_SILVER = 2;
     private static final int TYPE_GOLD = 3;
 
-<span class="fc" id="L15">    private static final Map&lt;Integer, Integer&gt; TYPE_DISCOUNT_RATE_MAP = Map.of(</span>
-<span class="fc" id="L16">                TYPE_NOMAL, 10,</span>
-<span class="fc" id="L17">                TYPE_SILVER, 20,</span>
-<span class="fc" id="L18">                TYPE_GOLD, 30</span>
+<span class="nc" id="L15">    private static final Map&lt;Integer, Integer&gt; TYPE_DISCOUNT_RATE_MAP = Map.of(</span>
+<span class="nc" id="L16">                TYPE_NOMAL, 10,</span>
+<span class="nc" id="L17">                TYPE_SILVER, 20,</span>
+<span class="nc" id="L18">                TYPE_GOLD, 30</span>
             );
 
     @Override
     public List&lt;Integer&gt; calculatePrice(String memberNo, int price) {
         int memberType;
-<span class="fc bfc" id="L24" title="All 4 branches covered.">        switch (memberNo) {</span>
+<span class="nc bnc" id="L24" title="All 4 branches missed.">        switch (memberNo) {</span>
             case &quot;A0001&quot;:
-<span class="fc" id="L26">                memberType = TYPE_NOMAL;</span>
-<span class="fc" id="L27">                break;</span>
+<span class="nc" id="L26">                memberType = TYPE_NOMAL;</span>
+<span class="nc" id="L27">                break;</span>
             case &quot;A0002&quot;:
-<span class="fc" id="L29">                memberType = TYPE_SILVER;</span>
-<span class="fc" id="L30">                break;</span>
+<span class="nc" id="L29">                memberType = TYPE_SILVER;</span>
+<span class="nc" id="L30">                break;</span>
             case &quot;A0003&quot;:
-<span class="fc" id="L32">                memberType = TYPE_GOLD;</span>
-<span class="fc" id="L33">                break;</span>
+<span class="nc" id="L32">                memberType = TYPE_GOLD;</span>
+<span class="nc" id="L33">                break;</span>
             default:
-<span class="fc" id="L35">                memberType = TYPE_NOMAL;</span>
+<span class="nc" id="L35">                memberType = TYPE_NOMAL;</span>
         }
 
         // 意図的にstopBugsの警告を出す
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (memberNo == &quot;A0001&quot;) {</span>
-<span class="nc" id="L40">            return null;</span>
-        }
+//        if (memberNo == &quot;A0001&quot;) {
+//            return null;
+//        }
 
-<span class="fc" id="L43">        int discountRate = TYPE_DISCOUNT_RATE_MAP.get(memberType);</span>
-<span class="fc" id="L44">        int discountPrice = (int) (price * ((100.0 - discountRate) /100));</span>
-<span class="fc" id="L45">        return List.of(</span>
-<span class="fc" id="L46">                    discountPrice,</span>
-<span class="fc" id="L47">                    memberType,</span>
-<span class="fc" id="L48">                    discountRate</span>
+<span class="nc" id="L43">        int discountRate = TYPE_DISCOUNT_RATE_MAP.get(memberType);</span>
+<span class="nc" id="L44">        int discountPrice = (int) (price * ((100.0 - discountRate) /100));</span>
+<span class="nc" id="L45">        return List.of(</span>
+<span class="nc" id="L46">                    discountPrice,</span>
+<span class="nc" id="L47">                    memberType,</span>
+<span class="nc" id="L48">                    discountRate</span>
                 );
+    }
+
+    @Override
+    public String hello() {
+<span class="nc" id="L54">        return &quot;hello&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
