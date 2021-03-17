@@ -36,9 +36,9 @@ import javax.enterprise.context.ApplicationScoped;
         }
 
         // 意図的にstopBugsの警告を出す
-//        if (memberNo == &quot;A0001&quot;) {
-//            return null;
-//        }
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if (memberNo == &quot;A0001&quot;) {</span>
+<span class="nc" id="L40">            return null;</span>
+        }
 
 <span class="fc" id="L43">        int discountRate = TYPE_DISCOUNT_RATE_MAP.get(memberType);</span>
 <span class="fc" id="L44">        int discountPrice = (int) (price * ((100.0 - discountRate) /100));</span>
