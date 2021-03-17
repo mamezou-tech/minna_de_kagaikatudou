@@ -43,6 +43,4 @@ public interface ProcutEndPointSpec {
         content = @Content(mediaType = "application/json", schema =
             @Schema(type = SchemaType.ARRAY, implementation = Integer.class, minItems = 3, maxItems = 3)))
     List<Integer> calculatePrice(@QueryParam("memberNo") String memberNo, @QueryParam("price") int price);
-
-    String hello();
 }

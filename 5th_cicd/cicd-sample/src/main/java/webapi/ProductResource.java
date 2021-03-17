@@ -48,9 +48,4 @@ public class ProductResource implements ProcutEndPointSpec {
                     discountRate
                 );
     }
-
-    @Override
-    public String hello() {
-        return "hello";
-    }
 }
