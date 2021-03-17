@@ -1,4 +1,5 @@
 # 第5回 最近のモダンなCI/CD環境 ～ Jenkinsおじさんいらず ～
+- 資料は[こちら](https://github.com/mamezou-tech/minna_de_kagaikatudou/blob/main/docs/05_%E6%9C%80%E8%BF%91%E3%81%AE%E3%83%A2%E3%83%80%E3%83%B3%E3%81%AACICD%E7%92%B0%E5%A2%83(%E5%85%AC%E9%96%8B%E7%94%A8).pdf)
 - アプリケーションの実行は<a href="http://54.199.30.101/static/">こちら</a>	
   - 画面のリンクからREST APIを呼び出します（Simple is best!）。ちなみに下のSwaggerUIからはGUIで実行できます
 - アプリケーションのAPI仕様(OpneAPI)は<a href="https://mamezou-tech.github.io/minna_de_kagaikatudou/swagger-ui/index.html">こちら</a>
