@@ -1,7 +1,4 @@
 [![CICD_flow](https://github.com/mamezou-tech/minna_de_kagaikatudou/actions/workflows/CICD_flow.yml/badge.svg)](https://github.com/mamezou-tech/minna_de_kagaikatudou/actions/workflows/CICD_flow.yml)
-<p align="left">
-  <img src="https://user-images.githubusercontent.com/60466339/110203098-84f5a600-7eaf-11eb-89b9-318489b8ca1d.png">
-</p>
 
 # みんな de 課外活動（仮）
 - 第1回 オリエンテーション
