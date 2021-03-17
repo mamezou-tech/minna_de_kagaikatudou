@@ -1,9 +1,11 @@
 # 第5回 最近のモダンなCI/CD環境 ～ Jenkinsおじさんいらず ～
-- 資料は[こちら](/5th_cicd/doc/modern_cicd_publicversion.pdf)
+- 当日の資料は[こちら](/5th_cicd/doc/modern_cicd_publicversion.pdf)
 - アプリケーションの実行は<a href="http://54.199.30.101/static/">こちら</a>	
   - 画面のリンクからREST APIを呼び出します（Simple is best!）。ちなみに下のSwaggerUIからはGUIで実行できます
+  - ※REST APIの呼び出しではTLSがオレオレ証明なのでブラウザで警告がでますが許可していただくと動作します
 - アプリケーションのAPI仕様(OpneAPI)は<a href="https://mamezou-tech.github.io/minna_de_kagaikatudou/swagger-ui/index.html">こちら</a>
   - MicroProfile OpenAPIで稼働中のアプリから取得したOpenAPIドキュメントをSwaggerUIで表示させてます
+  - ※オレオレ証明の警告を許可する必要があるので、まずは「アプリケーションの実行は<a href="http://54.199.30.101/static/">こちら</a>」からお試しください
 - ユニットテスト＆静的解析結果は<a href="https://mamezou-tech.github.io/minna_de_kagaikatudou/site/project-reports.html">こちら</a>	
   - JenkinsのDashboard的なのモノがないのでモダンな感じの[スキン](https://maven.apache.org/skins/)を使い懐かしのmaven site pluginで生成したページをGitHub Pagesにデプロイしてます
   
