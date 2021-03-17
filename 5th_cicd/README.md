@@ -13,10 +13,10 @@
     - [ApplicationConfig](/5th_cicd/cicd-sample/src/main/java/webapi/ApplicationConfig.java)
     - [ProductEndPointSpec](/5th_cicd/cicd-sample/src/main/java/webapi/ProcutEndPointSpec.java)
   - workflow(GitHubActions)のyaml
-    - [CICD_flow.yml](/.github/workflowsCICD_flow.yml)
-    - [MatrixTests.yml](/.github\workflows/MatrixTests.yml)
+    - [CICD_flow.yml](https://github.com/mamezou-tech/minna_de_kagaikatudou/blob/main/.github/workflows/CICD_flow.yml)
+    - [MatrixTests.yml](https://github.com/mamezou-tech/minna_de_kagaikatudou/blob/main/.github/workflows/MatrixTests.yml)
   
-- デモアプリのREST APIの仕様(/4th_restapi/doc/interface_spec.png) 
+- デモアプリのREST APIの仕様(/第4回のサンプルと同じ) 
 ![インターフェース仕様](/4th_restapi/doc/interface_spec.png)  
  
 - デモアプリのCI/CD構成
