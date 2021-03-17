@@ -7,3 +7,17 @@
   - JenkinsのDashboard的なのモノがないのでモダンな感じの[スキン](https://maven.apache.org/skins/)を使い懐かしのmaven site pluginで生成したページをGitHub Pagesにデプロイしてます
   
   ※ EC2にアプリをデプロイしているけどネットワークの設定が緩いのでIPが変わったらご愛敬でｍｍ
+
+- リンク情報
+  - OpenAPIのアノテーションが付けられているコード
+    - [ApplicationConfig](/5th_cicd/cicd-sample/src/main/java/webapi/ApplicationConfig.java)
+    - [ProductEndPointSpec](/5th_cicd/cicd-sample/src/main/java/webapi/ProcutEndPointSpec.java)
+  - workflow(GitHubActions)のyaml
+    - [CICD_flow.yml](/.github/workflowsCICD_flow.yml)
+    - [MatrixTests.yml](/.github\workflows/MatrixTests.yml)
+  
+- デモアプリのREST APIの仕様(/4th_restapi/doc/interface_spec.png) 
+![インターフェース仕様](/4th_restapi/doc/interface_spec.png)  
+ 
+- デモアプリのCI/CD構成
+![CICDの構成](https://user-images.githubusercontent.com/60466339/111430607-f0f0cd80-873d-11eb-8a2d-75089d41fb74.png)
